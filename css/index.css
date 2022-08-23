@@ -779,7 +779,7 @@ header{
 .icon-ce-f{
     border: solid 0px rgba(255, 0, 0);
     display: flex;
-    justify-content: left; 
+    justify-content: center; 
     align-items: center;
     width: 100%;
     background: rgb(0, 0, 0, 0.5);
@@ -787,11 +787,22 @@ header{
     padding: 3px 3px;
     height: auto;
 }
-.icon-ce-f span{
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    
+.icon-ce-f button{
+    width: 150px;
+    height: 35px;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 7px 7px;
+    cursor: pointer;
+    background: #c70707;
+    align-items: center;
+
 }
+.icon-ce-f button:hover{
+    background: #ffffff;
+    color: #000000;
+}
+
 .co-mov-1{
     width: 100%;
     height: 100%;
