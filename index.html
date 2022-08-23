@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B!LOA</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="icons/bootstrap-icons.css">
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+<header>
+    <div class="co-logo">
+        <div class="logo"><a href="go:index"><img src="img/LOGO1.png" alt=""></a></div>
+        <div class="search"><i class="bi-search" id="bi-search"></i></div>
+        <div class="share"><i class="bi-share" id="share"></i></div>
+    </div>
+    <div class="co-menu">
+        <div class="co-link-menu"><a href="peliculas.html"><p>Películas</p></a></div>
+        <div class="co-link-menu"><a href="series.html"><p>Series</p></a></div>
+        <div class="co-link-menu"><a href="#" id="menu-categorias"><p>Categoria<i class="bi-caret-down-fill"></i></p></a></div>
+    </div>
+</header>
+<div class="co-cartelera" id="cartelera"></div>
+<div class="co-recientes">
+    <p>Recientes</p>
+</div>
+<div class="co-movies" id="co-movies"></div>
+<template id="tem-movies">
+<div class="movies">
+    <a href="#"><img src="" alt=""></a>
+    <h5>title</h5>
+</div>
+</template>
+<div class="container-categorias" id="categorias">
+        
+    <div class="icon-ce"><a href="#"><span class="bi-arrow-left-short" id="xcategory"></span><p></p></a></div>
+     <div class="co_link">
+        
+         <li class="link"><a href="categorias/accion.html" >Acción</a></li>
+         <li class="link"><a href="categorias/animacion.html" >Animación</a></li>
+         <li class="link"><a href="categorias/aventura.html" >Aventura</a></li>
+         <li class="link"><a href="categorias/belico.html.html" >Bélico</a></li>
+         <li class="link"><a href="categorias/comedia.html" >Comedia</a></li>
+         <li class="link"><a href="categorias/drama.html" >Drama</a></li>
+         <li class="link"><a href="categorias/marvel.html" class="marvel" >Marvel</a></li>
+         <li class="link"><a href="categorias/suspenso.html" >Suspenso</a></li>
+         <li class="link"><a href="categorias/romance.html" >Romance</a></li>
+         <li class="link"><a href="categorias/terror.html" >Terror</a></li>
+                       
+     </div>
+</div>
+
+<div class="contenedor-inp" id="contenedor-inp">
+    <div class="cont-inp">
+        <span class="bi-arrow-left-short" id="atras-inp"></span>
+        <input type="text" id="inp" placeholder="Buscar Peliculas y Seires...">
+        <span class="bi-x" id="borrar-inp"></span>
+    </div>
+    
+    <div class="movies-index-buscador" id="movies-index-buscador"></div>
+    <template id="tem-buscador">
+        <div class="movies-buscador">
+            <a href="#"><img src="" alt=""></a>
+            <i class="bi-play-circle"></i>
+            <h5>title</h5>
+        </div>
+        </template>
+</div><!--buscador-->
+
+<div class="modal-so" id="modal-so">
+    <div class="button-cerrar">
+        <div class="icon-modal"><span class="bi-arrow-left-short" id="xcircle"></span></div>
+     </div>
+    <div class="co-so-mo">
+        <div class="co-a"><a target="_blank" href="https://api.whatsapp.com/send?text=https://cutt.ly/KLCKKYV"><span class="bi-whatsapp"></span><p>whatsapp</p></a></div>
+        <div class="co-a"> <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cutt.ly/KLCKKYV"><span class="bi-facebook"></span>facebook</a></div>    
+            <!--<a href="#"><span class="bi-instagram"></span>instagram</a>-->   
+            <div class="co-a"><a target="_blank" href="https://twitter.com/intent/tweet?url=https://cutt.ly/KLCKKYV"><span class="bi-twitter"></span>twitter</a></div>             
+     </div>
+     
+</div>
+
+<script src="js/index.js"></script>    
+</body>
+</html>

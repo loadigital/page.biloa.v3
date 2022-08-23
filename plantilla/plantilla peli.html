@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B!LOA</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../icons/bootstrap-icons.css">
+</head>
+<body style=" background: rgb(78, 3, 3);">
+<div class="co-main" id="co-main"></div>
+<div class="co-idioma">
+    <div class="idioma">
+        <img src="../img/LATINO.jpg" alt="">
+        <p>Español Latino</p>
+    </div>
+</div>
+<div class="co-video">
+    <div class="co-img-play">
+        <a target="_blank" href="http://lyksoomu.com/6U4Q"><i class="bi-play-circle" id="insertPeli"></i></a>
+     </div>
+    <div class="co-iframe">
+        <iframe class="video" id="video" src="https://sbspeed.com/e/d5t5kkrd5xlq.html"  frameborder=0 marginwidth=0 marginheight=0 allowfullscreen></iframe>
+    </div>
+    
+</div>
+<div class="recientes--"><p>Similares</p></div>
+<div class="movies-recomendadas" id="movies-recomendadas"></div>
+
+<!--javascript-->    
+<script>
+
+const insertPeli = document.getElementById("insertPeli");
+ insertPeli.addEventListener("click", function(){
+    document.querySelector(".co-img-play").style.display="none"   
+ });
+const co_main = document.getElementById("co-main");
+document.addEventListener('DOMContentLoaded', () => {
+    fetchData();
+});
+const fetchData = async () => {
+    try{
+        const res = await fetch('../js/api.json');
+        const data = await res.json();
+        dataPeliculas(data);
+    }catch (error) {
+        console.log(error);
+    };
+};
+
+const dataPeliculas =data =>{
+
+    for (let index = 0; index < data.length; index++) {
+        const element = data[index];
+        if(element.id === "A251"){
+    
+    const divCartelera = document.createElement("div");
+    divCartelera.innerHTML = `
+    <div class="contenedor--flecha">
+        <div class="flecha--s"><a href="#"><span class="bi-arrow-left-short" ></span></a></div>
+    </div>
+    <div
+    style="
+    background: linear-gradient(rgba(0,0,0,0.4) 0%, rgba(78, 3, 3) 100%), url(${element.urlImg});
+    min-height: 30.62em;
+    background-repeat: no-repeat;
+    background-position:  center;
+	background-size: 100%;
+	margin-bottom: 1.12em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:flex-end;
+    
+     ">
+    <div class="co-poster">
+    <div class="co-img-poster"><img src="${element.urlImg}" alt=""></div>
+    <div class="co-title-poster">
+        <div class="co-title-poster"><p class="title">${element.title}</p></div>
+        <div class="co-title-poster"><p class="title--">${element.genero}</p></div>
+        <div class="co-title-poster"><p class="title--">${element.puntuacion}</p></div>
+        <div class="co-title-poster"><p class="title--">${element.fecha}</p></div>
+        
+    </div>
+   </div>
+    </div>
+
+    <div class="co-poster">
+    <div class="co-sinopsis-poster"><p>${element.resumen}</p></div>
+    
+   </div>
+    `
+       co_main.appendChild(divCartelera);
+        
+        };
+    };
+};
+const moviesRecomendadas = document.getElementById("movies-recomendadas");
+const fragment = document.createDocumentFragment();
+document.addEventListener('DOMContentLoaded', () => {
+    fetchData1();
+});
+const fetchData1 = async () => {
+    try{
+        const res = await fetch('../js/api.json');
+        const data = await res.json();
+        dataRecomendadas(data);
+    }catch (error) {
+        console.log(error);
+    };
+};
+
+const dataRecomendadas = data =>{
+    function pintar(data){
+        return [...data].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 6)
+      }
+      pintar(data).forEach(element =>{
+                const div = document.createElement("div");
+                div.className = "movies";
+                const img1 = document.createElement("img");
+                img1.src = element.urlImg;
+                img1.id = element.id;
+                const a = document.createElement("a");
+                a.href = element.linkVideo;
+                div.appendChild(img1);
+                a.appendChild(img1)
+                div.appendChild(a);
+                const clone = div.cloneNode(true); 
+                fragment.appendChild(div);
+                moviesRecomendadas.appendChild(fragment)
+      });  
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B!LOA</title>
+    <link rel="stylesheet" href="https://loadigital.github.io/page.biloav2/css/index.css">
+    <link rel="stylesheet" href="https://loadigital.github.io/page.biloav2/icons/bootstrap-icons.css">
+    <style>
+         html, body{height: 100%;margin: 0;display: flex;flex-direction: column;}
+    </style>
+</head>
+<body style=" background: rgb(78, 3, 3);">
+<div class="co-main" id="co-main"></div>
+
+<div class="contenedor-link" >
+    <nav class="co-nav">
+        <ul class="menu">
+            <li class="list">
+               <p class="submenu-btn">Temporada 1</p>
+                <ul class="cont-link" id="menu">
+                    <li class="link--"><a target="insertPage" href="https://uqload.com/embed-djkxiiev4fqf.html" class="menu__link empujar"><i class="bi-play-fill"></i>Barbaros TEM1-EPS1</a></li>
+                    <li class="link--"><a target="insertPage" href="https://uqload.com/embed-vs2vowxd44yb.html" class="menu__link empujar"><i class="bi-play-fill"></i>Barbaros TEM1-EPS2</a></li>
+                    <li class="link--"><a target="insertPage" href="https://v2.zplayer.live/embed/wd5na1lt1644" class="menu__link empujar"><i class="bi-play-fill"></i>Barbaros TEM1-EPS3</a></li>
+                    <li class="link--"><a target="insertPage" href="https://uqload.com/embed-r7fr9lckknii.html" class="menu__link empujar"><i class="bi-play-fill"></i>Barbaros TEM1-EPS4</a></li>
+                    <li class="link--"><a target="insertPage" href="https://uqload.com/embed-1v9eevt36060.html" class="menu__link empujar"><i class="bi-play-fill"></i>Barbaros TEM1-EPS5</a></li>
+                    <li class="link--"><a target="insertPage" href="https://uqload.com/embed-rk2j04u98aj3.html" class="menu__link empujar"><i class="bi-play-fill"></i>Barbaros TEM1-EPS6</a></li>
+                    
+                                      
+                </ul>
+            </li>
+        </ul><!--end temporada-->
+
+        
+        
+       </nav>
+    </div>
+<div class="recientes--"><p>Recomendados</p></div>
+<div class="movies-recomendadas" id="movies-recomendadas"></div>
+
+<div class="pag-movies" id="page-iframe">
+    <div class="button-page-x">
+        <div class="icon-ce-f"><a href="#"><span class="bi-arrow-left-short" id="iframe--"></span><p></p></a> </div> 
+    </div>
+    <div class="co-img-play-1">
+        <a target="_blank" href="http://lyksoomu.com/6U4Q"><i class="bi-play-circle" id="insertPeli"></i></a>
+     </div>
+    <div class="co-mov-1" >
+        <iframe src="loadPage.htm" name="insertPage"  id='frame' class="play-iframe" frameborder=0 marginwidth=0 marginheight=0 scrolling=yes width=640 height=360 allowfullscreen ></iframe> 
+    </div>
+</div> <!--end iframe-->
+
+<!--javascript-->    
+<script>
+
+const insertPeli = document.getElementById("insertPeli");
+ insertPeli.addEventListener("click", function(){
+    document.querySelector(".co-img-play-1").style.display="none"   
+ });
+const co_main = document.getElementById("co-main");
+document.addEventListener('DOMContentLoaded', () => {
+    fetchData();
+});
+const fetchData = async () => {
+    try{
+        const res = await fetch('https://loadigital.github.io/page.biloav2/js/api.json');
+        const data = await res.json();
+        dataPeliculas(data);
+    }catch (error) {
+        console.log(error);
+    };
+};
+
+const dataPeliculas =data =>{
+
+    for (let index = 0; index < data.length; index++) {
+        const element = data[index];
+        if(element.id === "A136"){
+    
+    const divCartelera = document.createElement("div");
+    divCartelera.innerHTML = `
+    <div class="contenedor--flecha">
+        <div class="flecha--s"><a href="go:index"><span class="bi-arrow-left-short" ></span></a></div>
+    </div>
+    <div
+    style="
+    background: linear-gradient(rgba(0,0,0,0.4) 0%, rgba(78, 3, 3) 100%), url(${element.urlImg});
+    min-height: 30.62em;
+    background-repeat: no-repeat;
+    background-position:  center;
+	background-size: 100%;
+	margin-bottom: 1.12em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:flex-end;
+    
+     ">
+    <div class="co-poster">
+    <div class="co-img-poster"><img src="${element.urlImg}" alt=""></div>
+    <div class="co-title-poster">
+        <div class="co-title-poster"><p class="title">${element.title}</p></div>
+        <div class="co-title-poster"><p class="title--">${element.genero}</p></div>
+        <div class="co-title-poster"><p class="title--">${element.puntuacion}</p></div>
+        <div class="co-title-poster"><p class="title--">${element.fecha}</p></div>
+        
+    </div>
+   </div>
+    </div>
+
+    <div class="co-poster">
+    <div class="co-sinopsis-poster"><p>${element.resumen}</p></div>
+    
+   </div>
+    `
+       co_main.appendChild(divCartelera);
+        
+        };
+    };
+};
+const moviesRecomendadas = document.getElementById("movies-recomendadas");
+const fragment = document.createDocumentFragment();
+document.addEventListener('DOMContentLoaded', () => {
+    fetchData1();
+});
+const fetchData1 = async () => {
+    try{
+        const res = await fetch('https://infobiloa.github.io/BD.BILOA.COM/apis/series.json');
+        const data = await res.json();
+        dataRecomendadas(data);
+    }catch (error) {
+        console.log(error);
+    };
+};
+
+const dataRecomendadas = data =>{
+    function pintar(data){
+        return [...data].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 6)
+      }
+      pintar(data).forEach(element =>{
+                const div = document.createElement("div");
+                div.className = "movies";
+                const img1 = document.createElement("img");
+                img1.src = element.urlImg;
+                img1.id = element.id;
+                const a = document.createElement("a");
+                a.href = element.linkVideo;
+                div.appendChild(img1);
+                a.appendChild(img1)
+                div.appendChild(a);
+                const clone = div.cloneNode(true); 
+                fragment.appendChild(div);
+                moviesRecomendadas.appendChild(fragment)
+      });  
+};
+const subMenuBtn = document.querySelectorAll(".submenu-btn");
+    for(let i=0; i < subMenuBtn.length; i++){
+      subMenuBtn[i].addEventListener("click", function(){
+            
+             const subMenu = this.nextElementSibling;
+             const height = subMenu.scrollHeight;
+    
+             if(subMenu.classList.contains("deploy")){
+                subMenu.classList.remove("deploy");
+                subMenu.removeAttribute("style");
+             } else{
+                subMenu.classList.add("deploy");
+                subMenu.style.height = height + "px";
+             }
+    
+        });
+    }
+    const link = document.querySelectorAll('.link-- a[href^="https"')
+    
+    fullscreen = function(e){
+       if (e.webkitRequestFullScreen) {
+         e.webkitRequestFullScreen();
+       } else if(e.mozRequestFullScreen) {
+         e.mozRequestFullScreen();
+       };
+    };
+
+    const flechaFrame = document.getElementById("iframe--");
+    flechaFrame.addEventListener("click", function(){
+        document.getElementById("page-iframe").style.bottom="-100%";
+        document.getElementById("frame").src = ""; 
+    });
+
+    link.forEach(link =>{
+        link.addEventListener("click", function(){
+            document.getElementById("page-iframe").style.bottom="0"; 
+            document.querySelector(".co-img-play-1").style.display="flex"
+        })
+    })
+
+</script>
+</body>
+</html>
