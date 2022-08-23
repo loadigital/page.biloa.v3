@@ -461,6 +461,7 @@ header{
     width: 100%;
     border: solid 0px chartreuse;
     position: fixed;
+    display: none;
 }
 .flecha--s{
     width: 100%;
