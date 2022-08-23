@@ -819,3 +819,6 @@ header{
     width: 100%;
     height: 100%;
 }
+.bi-star, .bi-star-half, .bi-star-fill{
+    color:#fcff2f;
+}
